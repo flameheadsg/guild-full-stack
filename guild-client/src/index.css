@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  padding: 10px;
+  font-family: sans-serif;
+  background-image: url('https://i.gyazo.com/8d02888f1921e2715a971bc2eb7b84c3.jpg');
+  transform: scale(0.95);
+}
+
+.appdiv {
+  color: white;
+  background-color: rgb(122, 61, 61);
+  border: 2px double white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#torchimg {
+  height: 350px;
+  margin-top: 100px;
+}
+
+#app {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#newdiv {
+  font-size: 20px;
+}
+
+#setname {
+  background-color: rgb(255, 244, 244);
+}
+
+#startbtn {
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 7px;
+}
+
+#startbtn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+#homediv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.vip {
+  color: rgb(255, 211, 211);
+}
+
+#questbtn {
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgb(68, 32, 32);
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
+
+#questbtn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#questbtn:active {
+  transform: scale(1.135);
+}
+
+.hirebtn {
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 7px;
+}
+
+.hirebtn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.hirebtn:active {
+  transform: scale(1.099);
+}
