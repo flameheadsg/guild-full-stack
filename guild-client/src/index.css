@@ -30,7 +30,7 @@ body {
   font-size: 20px;
 }
 
-#setname {
+.name {
   background-color: rgb(255, 244, 244);
 }
 
@@ -87,4 +87,33 @@ body {
 
 .hirebtn:active {
   transform: scale(1.099);
+}
+
+#exitbtn {
+  padding: 13px;
+  border: 0px solid white;
+  border-radius: 6px;
+  transform: scale(1.135);
+  background-color: rgb(252, 234, 234);
+  color: red;
+}
+
+#exitbtn:hover {
+  cursor: pointer;
+  animation-duration: 0.3s;
+  animation-name: colorswitch;
+  background-color: rgb(196, 23, 23);
+  color: white;
+}
+
+@keyframes colorswitch {
+  from {
+    background-color: rgb(252, 234, 234);
+    color: red;
+  }
+
+  to {
+    background-color: rgb(196, 23, 23);
+    color: white;
+  }
 }

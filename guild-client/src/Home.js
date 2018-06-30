@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Home extends Component {
   constructor(props) {
@@ -6,22 +7,22 @@ class Home extends Component {
 
     this.state = {
       name: this.props.name,
-      gold: 0,
-      goldRange: 4,
-      gps: 0,
-      members1: 0,
-      members2: 0,
-      members3: 0,
-      members4: 0,
-      members5: 0,
-      members1c: 100,
-      members2c: 1000,
-      members3c: 25000,
-      members4c: 500000,
-      members5c: 10000000,
-      sp1: true,
-      sp2: false,
-      sp3: false
+      gold: this.props.gold,
+      goldRange: this.props.goldRange,
+      gps: this.props.gps,
+      members1: this.props.members1,
+      members2: this.props.members2,
+      members3: this.props.members3,
+      members4: this.props.members4,
+      members5: this.props.members5,
+      members1c: this.props.members1c,
+      members2c: this.props.members2c,
+      members3c: this.props.members3c,
+      members4c: this.props.members4c,
+      members5c: this.props.members5c,
+      sp1: this.props.sp1,
+      sp2: this.props.sp2,
+      sp3: this.props.sp3
     }
 
     this.questClick = this.questClick.bind(this);
@@ -39,6 +40,8 @@ class Home extends Component {
     this.renderNecros = this.renderNecros.bind(this);
     this.buyElite = this.buyElite.bind(this);
     this.renderElites = this.renderElites.bind(this);
+    this.saveGuild = this.saveGuild.bind(this);
+    this.handleExit = this.handleExit.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +49,39 @@ class Home extends Component {
       () => this.addGPS(),
       1000
     );
+
+    this.timerID2 = setInterval(
+      () => this.saveGuild(),
+      10000
+    );
+  }
+
+  handleExit() {
+    this.saveGuild();
+    this.props.onExit();
+  }
+
+  saveGuild() {
+    let APIURL = '/api/' + this.state.name;
+    axios.put(APIURL, {
+        name: this.state.name,
+        gold: this.state.gold,
+        goldRange: this.state.goldRange,
+        gps: this.state.gps,
+        members1: this.state.members1,
+        members2: this.state.members2,
+        members3: this.state.members3,
+        members4: this.state.members4,
+        members5: this.state.members5,
+        members1c: this.state.members1c,
+        members2c: this.state.members2c,
+        members3c: this.state.members3c,
+        members4c: this.state.members4c,
+        members5c: this.state.members5c,
+        sp1: this.state.sp1,
+        sp2: this.state.sp2,
+        sp3: this.state.sp3
+    });
   }
 
   addGPS() {
@@ -68,13 +104,13 @@ class Home extends Component {
         gps: prevState.gps + 5,
         members1c: Math.round(this.state.members1c * Math.pow(1.075, (this.state.members1 + 1)))
       }));
-    }
 
-    if (this.state.sp1) {
-      this.setState({
-        sp1: false,
-        sp2: true
-      });
+      if (this.state.sp1) {
+        this.setState({
+          sp1: false,
+          sp2: true
+        });
+      }
     }
   }
 
@@ -86,13 +122,13 @@ class Home extends Component {
         gps: prevState.gps + 50,
         members2c: Math.round(this.state.members2c * Math.pow(1.135, (this.state.members2 + 1)))
       }));
-    }
 
-    if (this.state.sp1) {
-      this.setState({
-        sp1: false,
-        sp2: true
-      });
+      if (this.state.sp1) {
+        this.setState({
+          sp1: false,
+          sp2: true
+        });
+      }
     }
   }
 
@@ -104,13 +140,13 @@ class Home extends Component {
         gps: prevState.gps + 500,
         members3c: Math.round(this.state.members3c * Math.pow(1.225, (this.state.members3 + 1)))
       }));
-    }
 
-    if (this.state.sp1) {
-      this.setState({
-        sp1: false,
-        sp2: true
-      });
+      if (this.state.sp1) {
+        this.setState({
+          sp1: false,
+          sp2: true
+        });
+      }
     }
   }
 
@@ -122,13 +158,13 @@ class Home extends Component {
         gps: prevState.gps + 5000,
         members4c: Math.round(this.state.members4c * Math.pow(1.225, (this.state.members4 + 1)))
       }));
-    }
 
-    if (this.state.sp1) {
-      this.setState({
-        sp1: false,
-        sp2: true
-      });
+      if (this.state.sp1) {
+        this.setState({
+          sp1: false,
+          sp2: true
+        });
+      }
     }
   }
 
@@ -140,14 +176,14 @@ class Home extends Component {
         gps: prevState.gps + 50000,
         members5c: Math.round(this.state.members5c * Math.pow(1.3, (this.state.members5 + 1)))
       }));
-    }
 
-    if (this.state.sp1 || this.state.sp2) {
-      this.setState({
-        sp1: false,
-        sp2: false,
-        sp3: true
-      });
+      if (this.state.sp1 || this.state.sp2) {
+        this.setState({
+          sp1: false,
+          sp2: false,
+          sp3: true
+        });
+      }
     }
   }
 
@@ -261,11 +297,15 @@ class Home extends Component {
     return (
       <div>
         <div>
-          <br /><br />
+          <br />
+          <p>------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+          <br />
           <h2>
             Your Guild <span className="vip">{this.state.name}</span> has a balance of <span className="vip">{this.state.gold}</span> gold
           </h2>
-          <br /><br />
+          <br />
+          <p>------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+          <br />
         </div>
         <div id="homediv">
           <div className="col-2 col-md-4">
@@ -333,7 +373,18 @@ class Home extends Component {
             {this.renderGPS()}
           </div>
         </div>
-        <br /><br />
+        <br />
+        <p>------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+        <div>
+          <button
+            id="exitbtn"
+            onClick={this.handleExit}
+          >
+            Save and Exit
+          </button>
+        </div>
+        <br />
+        <p>------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
       </div>
     );
   }
