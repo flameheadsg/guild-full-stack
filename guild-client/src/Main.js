@@ -37,47 +37,62 @@ class Main extends Component {
 
   exit() {
     this.setState({
-      playing: false
+      playing: false,
+      name: '',
+      gold: 0,
+      goldRange: 4,
+      gps: 0,
+      members1: 0,
+      members2: 0,
+      members3: 0,
+      members4: 0,
+      members5: 0,
+      members1c: 100,
+      members2c: 1000,
+      members3c: 25000,
+      members4c: 500000,
+      members5c: 10000000,
+      sp1: true,
+      sp2: false,
+      sp3: false
     });
   }
 
-  fetchGuild() {
+  async fetchGuild() {
     let APIURL = '/api/' + this.state.name;
-    axios.get(APIURL)
-    .then(res => {
-      if(!res.data[0]) {
-        console.log('could not find guild');
-        this.createGuild();
-      } else {
-        console.log('found guild!!!');
-        console.log(res.data[0].gold)
-        this.setState({
-          name: res.data[0].name,
-          gold: res.data[0].gold,
-          goldRange: res.data[0].goldRange,
-          gps: res.data[0].gps,
-          members1: res.data[0].members1,
-          members2: res.data[0].members2,
-          members3: res.data[0].members3,
-          members4: res.data[0].members4,
-          members5: res.data[0].members5,
-          members1c: res.data[0].members1c,
-          members2c: res.data[0].members2c,
-          members3c: res.data[0].members3c,
-          members4c: res.data[0].members4c,
-          members5c: res.data[0].members5c,
-          sp1: res.data[0].sp1,
-          sp2: res.data[0].sp2,
-          sp3: res.data[0].sp3,
-          playing: true
-        });
-      }
-    });
+    let res = await axios.get(APIURL)
+    if(!res.data[0]) {
+      console.log('could not find guild');
+      this.createGuild();
+    } else {
+      console.log('found guild!!!');
+      this.setState({
+        name: res.data[0].name,
+        gold: res.data[0].gold,
+        goldRange: res.data[0].goldRange,
+        gps: res.data[0].gps,
+        members1: res.data[0].members1,
+        members2: res.data[0].members2,
+        members3: res.data[0].members3,
+        members4: res.data[0].members4,
+        members5: res.data[0].members5,
+        members1c: res.data[0].members1c,
+        members2c: res.data[0].members2c,
+        members3c: res.data[0].members3c,
+        members4c: res.data[0].members4c,
+        members5c: res.data[0].members5c,
+        sp1: res.data[0].sp1,
+        sp2: res.data[0].sp2,
+        sp3: res.data[0].sp3,
+        playing: true
+      });
+    }
   }
 
-  createGuild() {
+  async createGuild() {
     console.log('creating guild');
-    axios.post('/api/', {
+    let APIURL = '/api/' + this.state.name;
+    let res = await axios.post(APIURL, {
       name: this.state.name,
       gold: 0,
       goldRange: 4,
@@ -96,6 +111,7 @@ class Main extends Component {
       sp2: false,
       sp3: false
     });
+    console.log(res);
     this.setState({
       name: this.state.name,
       playing: true
@@ -108,9 +124,9 @@ class Main extends Component {
     });
   }
 
-  handleNameSubmit() {
+  async handleNameSubmit() {
     if (this.state.name !== '') {
-      this.fetchGuild();
+      await this.fetchGuild();
     } else {
       window.alert('Please name your Guild!');
     }
@@ -127,7 +143,7 @@ class Main extends Component {
             Your journey begins as a lowly mercenary, a blade-for-hire...
           </p>
           <p>
-            You dream of one day owning the most successful freelancing guild in the land...
+            You dream of one day owning the most successful freelancing Guild in the land...
           </p>
           <p>
             Build a name for your enterprise and enlist the aid of champions to fight for your cause!

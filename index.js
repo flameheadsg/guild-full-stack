@@ -31,8 +31,13 @@ app.post('/api/', async (req, res) => {
   res.json(newGuild);
 });
 
+app.post('/api/:GuildName', async (req, res) => {
+  let newGuild = await Guild.create(req.body);
+  res.json(newGuild);
+});
+
 app.put('/api/:GuildName', async (req, res) => {
-  let updatedGuild = await Guild.findOneAndUpdate(req.body);
+  let updatedGuild = await Guild.findOneAndUpdate({name: req.params.GuildName}, req.body);
   res.json(updatedGuild);
 });
 

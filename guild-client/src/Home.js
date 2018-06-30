@@ -49,21 +49,20 @@ class Home extends Component {
       () => this.addGPS(),
       1000
     );
-
-    this.timerID2 = setInterval(
-      () => this.saveGuild(),
-      10000
-    );
   }
 
-  handleExit() {
-    this.saveGuild();
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  async handleExit() {
+    await this.saveGuild();
     this.props.onExit();
   }
 
-  saveGuild() {
+  async saveGuild() {
     let APIURL = '/api/' + this.state.name;
-    axios.put(APIURL, {
+    let res = await axios.put(APIURL, {
         name: this.state.name,
         gold: this.state.gold,
         goldRange: this.state.goldRange,

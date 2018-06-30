@@ -5,7 +5,10 @@ const {
 } = mongoose;
 
 const guildSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    unique: true
+  },
   gold: Number,
   goldRange: Number,
   gps: Number,
