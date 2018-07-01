@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
+
 const {
   Schema
 } = mongoose;
@@ -7,7 +8,12 @@ const {
 const guildSchema = new Schema({
   name: {
     type: String,
-    unique: true
+    unique: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true
   },
   gold: Number,
   goldRange: Number,

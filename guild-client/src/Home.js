@@ -62,7 +62,7 @@ class Home extends Component {
 
   async saveGuild() {
     let APIURL = '/api/' + this.state.name;
-    let res = await axios.put(APIURL, {
+    await axios.put(APIURL, {
         name: this.state.name,
         gold: this.state.gold,
         goldRange: this.state.goldRange,

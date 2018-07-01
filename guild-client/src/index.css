@@ -34,14 +34,17 @@ body {
   background-color: rgb(255, 244, 244);
 }
 
-#startbtn {
+.mainbtn {
   padding: 5px;
   border: 1px solid white;
   border-radius: 7px;
+  background-color: rgb(96, 35, 35);
+  color: white;
+  transform: scale(1.275);
 }
 
-#startbtn:hover {
-  transform: scale(1.05);
+.mainbtn:hover {
+  transform: scale(1.35);
   cursor: pointer;
 }
 
@@ -116,4 +119,8 @@ body {
     background-color: rgb(196, 23, 23);
     color: white;
   }
+}
+
+.modal-content {
+  color: black;
 }
