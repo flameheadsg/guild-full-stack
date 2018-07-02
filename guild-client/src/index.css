@@ -44,7 +44,9 @@ body {
 }
 
 .mainbtn:hover {
-  transform: scale(1.35);
+  animation-duration: 0.175s;
+  animation-name: grow;
+  animation-fill-mode: forwards;
   cursor: pointer;
 }
 
@@ -109,6 +111,10 @@ body {
   color: white;
 }
 
+.modal-content {
+  color: black;
+}
+
 @keyframes colorswitch {
   from {
     background-color: rgb(252, 234, 234);
@@ -121,6 +127,12 @@ body {
   }
 }
 
-.modal-content {
-  color: black;
+@keyframes grow {
+  from {
+    transform: scale(1.275);
+  }
+
+  to {
+    transform: scale(1.4);
+  }
 }
