@@ -241,12 +241,12 @@ class Main extends Component {
                   </label>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-secondary modalbtn" data-dismiss="modal">Close</button>
                   &nbsp;
                   <button
                     id="startbtn"
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary modalbtn"
                     data-dismiss="modal"
                     onClick={this.handleCreate}
                   >
@@ -290,11 +290,11 @@ class Main extends Component {
                 </label>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-secondary modalbtn" data-dismiss="modal">Close</button>
                 &nbsp;
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-primary modalbtn"
                   data-dismiss="modal"
                   onClick={this.handleFetch}
                 >
