@@ -17,6 +17,10 @@ body {
 #torchimg {
   height: 350px;
   margin-top: 100px;
+  animation-name: fadeIn;
+  animation-duration: 0.75s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
 }
 
 #app {
@@ -41,6 +45,10 @@ body {
   background-color: rgb(96, 35, 35);
   color: white;
   transform: scale(1.275);
+  animation-name: fadeInBottom;
+  animation-duration: 0.75s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
 }
 
 .mainbtn:hover {
@@ -115,6 +123,20 @@ body {
   color: black;
 }
 
+#main-header {
+  animation-name: fadeInLeft;
+  animation-duration: 0.75s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+
+#main-intro {
+  animation-name: fadeInRight;
+  animation-duration: 0.75s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+
 @keyframes colorswitch {
   from {
     background-color: rgb(252, 234, 234);
@@ -134,5 +156,68 @@ body {
 
   to {
     transform: scale(1.4);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-65px);
+    opacity: 0;
+  }
+
+  95% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(65px);
+    opacity: 0;
+  }
+
+  95% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInBottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  95% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1.275);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0.01);
+    opacity: 0;
+  }
+
+  95% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
   }
 }

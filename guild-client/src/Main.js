@@ -185,18 +185,23 @@ class Main extends Component {
       return (
         <div id="newdiv">
           <p>---------------------------------------------------------------------------------------------------------------------------</p>
-          <h2>Welcome to Guild of Heroes!</h2>
+            <div id="main-header">
+              <h2>Welcome to Guild of Heroes!</h2>
+            </div>
           <p>---------------------------------------------------------------------------------------------------------------------------</p>
-          <p>
-            Your journey begins as a lowly mercenary, a blade-for-hire...
-          </p>
-          <p>
-            You dream of one day owning the most successful freelancing Guild in the land...
-          </p>
-          <p>
-            Build a name for your enterprise and enlist the aid of champions to fight for your cause!
-          </p>
+          <div id="main-intro">
+            <p>
+              Your journey begins as a lowly mercenary, a blade-for-hire...
+            </p>
+            <p>
+              You dream of one day owning the most successful freelancing Guild in the land...
+            </p>
+            <p>
+              Build a name for your enterprise and enlist the aid of champions to fight for your cause!
+            </p>
+          </div>
           <p>---------------------------------------------------------------------------------------------------------------------------</p>
+
           <button type="button" className="btn mainbtn" data-toggle="modal" data-target="#createModal">
             Begin a new adventure!
           </button>
